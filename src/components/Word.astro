@@ -12,7 +12,16 @@ const {href, title, body} = Astro.props;
   // 懐かしいコードだな
   const wordElem = document.querySelector('#word');
   const displayElem = document.querySelector('#display');
+  const RETURN_KEY_CODE = 13;
+  wordElem.addEventListener('keydown', (event) => {
+    console.log('keydown', event.which);
+    if (event.which === RETURN_KEY_CODE) {
+      // iOS の改行ボタンをタップした時
+      displayElem.innerText = event.srcElement.value;
+    }
+  }, false);
   wordElem.addEventListener('keyup', (event) => {
+    console.log('keyup');
     // displayElem.textContent(event.srcElement.value);
     displayElem.innerText = event.srcElement.value;
   }, false);
@@ -28,10 +37,10 @@ const {href, title, body} = Astro.props;
 <style>
   #word {
       font-size: 150%;
-      max-width: 100%;
+      max-width: 90%;
   }
   #display {
-      font-size: 300%;
+      font-size: 320%;
       max-width: 100%;
   }
 
