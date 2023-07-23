@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  href: string;
+}
+
+const {href, title, body} = Astro.props;
+---
+
+<script>
+  // 懐かしいコードだな
+  const wordElem = document.querySelector('#word');
+  const displayElem = document.querySelector('#display');
+  wordElem.addEventListener('keyup', (event) => {
+    // displayElem.textContent(event.srcElement.value);
+    displayElem.innerText = event.srcElement.value;
+  }, false);
+
+  wordElem.focus();
+</script>
+
+<div>
+  <input type="text" id="word">
+  <p><span id="display"></span></p>
+</div>
+
+<style>
+  #word {
+      font-size: 150%;
+  }
+  #display {
+      font-size: 300%;
+  }
+
+</style>
