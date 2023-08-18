@@ -13,7 +13,7 @@ const Word: React.FC<WordProps> = (...props) => {
   useEffect(() => {
     // https://qiita.com/akifumii/items/539e4af7ed4d068c0144
     textRef.current?.focus();
-  }, []);
+  });
 
   const inputHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     // https://stackoverflow.com/questions/59573672/how-do-i-type-e-key-and-e-target-value-with-typescript-in-react
