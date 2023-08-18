@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 type WordProps = {
   title: string;
@@ -8,6 +8,12 @@ type WordProps = {
 
 const Word: React.FC<WordProps> = (...props) => {
   const [text, setText] = useState('');
+  const textRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // https://qiita.com/akifumii/items/539e4af7ed4d068c0144
+    textRef.current?.focus();
+  });
 
   const inputHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     // https://stackoverflow.com/questions/59573672/how-do-i-type-e-key-and-e-target-value-with-typescript-in-react
@@ -18,7 +24,7 @@ const Word: React.FC<WordProps> = (...props) => {
   return (
     <>
       <div>
-        <input type="text" className='word' onInput={inputHandler} />
+        <input type="text" ref={textRef} className='word' onInput={inputHandler} />
         <p><span className='display'>{text}</span></p>
       </div>
       <style jsx="true">{`
