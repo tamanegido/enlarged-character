@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Word from '../components/Word.astro';
+// import Card from '../components/Card.astro';
+// import Word from '../components/Word.astro';
+import Word from '../components/Word';
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<h1><span class="text-gradient">文字拡大ページ</span></h1>
-		<Word />
+		<Word client:load />
 	</main>
 </Layout>
 
